@@ -1,0 +1,5 @@
+version: '3'
+services:
+  best-base:
+    build: . 
+    image: arturbrodzki/best:base
