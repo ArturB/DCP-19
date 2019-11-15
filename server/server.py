@@ -100,6 +100,7 @@ class server:
         packets_queue.unbind()
 
     def packet_callback(self, _packet):
+        print("packet callback")
         ip_packet = IP(_packet.get_payload())
         tcp_packet = TCP(_packet.get_payload())
         # check if this is a packet which we can modify
