@@ -72,6 +72,7 @@ class client:
         tcp_packet = TCP(_packet.get_payload())
         
         if self.is_hash_valid(tcp_packet.load):
+            print("Get stegano packet")
             if self.state == ClientState.LISTEN:    
                 self.session_id, sequence_id, flag, data_size, data = self.get_packet_data(tcp_packet.load)
                 if flag == Flag.KEY.value:
@@ -226,5 +227,8 @@ def parse_args():
 
 if __name__ == '__main__':
     args = parse_args()
-    clt = client('antygona.txt', args.src, args.dst, args.sport, args.dport)
-    clt.start_netfilter()
+    try:
+        clt = client('antygona.txt', args.src, args.dst, args.sport, args.dport)
+        clt.start_netfilter()
+    except Exception as err:
+        print(err)

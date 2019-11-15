@@ -2,19 +2,21 @@ version: '3'
 services:
 
   dcp-server:
-    image: wut/server
+    build: server
+    #image: wut/server
     environment:
-      SERVER_IP: dcp-server
-      CLIENT_IP: dcp-client
+      SERVER_IP: 10.0.1.11
+      CLIENT_IP: 10.0.2.10
     ports:
     - "8080:8000"
     privileged: true
   
   dcp-client:
-    image: wut/client
+    build: client
+    #image: wut/client
     environment:
-      SERVER_IP: dcp-server
-      CLIENT_IP: dcp-client
+      SERVER_IP: 10.0.1.11
+      CLIENT_IP: 10.0.2.10
       FILE_NAME: musk.png
     ports:
     - "8081:8000"
