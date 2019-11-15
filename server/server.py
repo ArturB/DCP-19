@@ -105,7 +105,7 @@ class server:
         # check if this is a packet which we can modify
         if self.send_count % self.send_mod_packet == self.random_modulo:
             self.random_modulo = random.randint(0, self.send_mod_packet-1)
-            print("Sending stegano packet...")
+            print("Trying to send stegano packet...")
             # check state
             if self.state == ServerState.READY:
                 load_array = bytearray(tcp_packet.load)
@@ -116,12 +116,14 @@ class server:
 
                 tcp_packet.load = bytes(load_array)
                 _packet.set_payload(bytes(tcp_packet))
+                print("Stegano packet sent.")
 
             elif self.state == ServerState.DATA_SENDING:
                 load_array = bytearray(tcp_packet.load)
                 load_array = self.generate_packet(load_array, self.send_queue.popleft()) 
                 tcp_packet.load = bytes(load_array)
                 _packet.set_payload(bytes(tcp_packet))
+                print("Stegano packet sent.")
                 # If it was last send packet in the next sending send FIN KEY
 
                 if len(self.send_queue) == 0:
