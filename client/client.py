@@ -69,6 +69,7 @@ class client:
         return load_array
 
     def packet_callback(self, _packet):
+        #print("packet callback")
         tcp_packet = TCP(_packet.get_payload())
         
         if self.is_hash_valid(tcp_packet.load):
@@ -226,6 +227,7 @@ def parse_args():
 
 
 if __name__ == '__main__':
+    print("Starting client.py script...")
     args = parse_args()
     try:
         clt = client('antygona.txt', args.src, args.dst, args.sport, args.dport)
