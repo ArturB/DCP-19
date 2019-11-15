@@ -40,5 +40,5 @@ echo "Awaiting communication"
 pipenv run python -u client.py --src $CLIENT --sport $CLIENT_PORT --dst $SERVER --dport $SERVER_PORT &
 
 tshark -w client_dump.pcap -a duration:50 &
-sleep 10
+sleep 2
 ./download_file.sh $FILE_NAME > $FILE_NAME
