@@ -8,7 +8,7 @@ services:
       SERVER_IP: 192.168.10.11
       CLIENT_IP: 192.168.10.12
     ports:
-    - 8000:8000"
+    - "8000:8000"
     privileged: true
   
   dcp-client:
