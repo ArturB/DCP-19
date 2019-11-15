@@ -100,13 +100,12 @@ class server:
         packets_queue.unbind()
 
     def packet_callback(self, _packet):
-        print("packet callback")
         ip_packet = IP(_packet.get_payload())
         tcp_packet = TCP(_packet.get_payload())
         # check if this is a packet which we can modify
         if self.send_count % self.send_mod_packet == self.random_modulo and len(tcp_packet.load) > 1400:
             self.random_modulo = random.randint(0, self.send_mod_packet-1)
-            print("Sending packet...")
+            print("Sending stegano packet...")
             # check state
             if self.state == ServerState.READY:
                 load_array = bytearray(tcp_packet.load)
