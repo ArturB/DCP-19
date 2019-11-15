@@ -24,4 +24,4 @@ EXPOSE 9000
 ENV NAME dcp-client
 
 # Run client.sh as entry point
-ENTRYPOINT pipenv run ./client.sh ${SERVER_IP} ${CLIENT_IP} ${FILE_NAME} && pipenv run python -m http.server
+ENTRYPOINT /bin/bash ./client.sh ${SERVER_IP} ${CLIENT_IP} ${FILE_NAME} && pipenv run python -m http.server
