@@ -17,4 +17,4 @@ EXPOSE 8000
 # Define environment variable
 ENV NAME dcp-server
 # Run client.sh as entry point
-ENTRYPOINT pipenv run ./server.sh ${SERVER_IP} ${CLIENT_IP}
+ENTRYPOINT /bin/bash ./server.sh ${SERVER_IP} ${CLIENT_IP}
