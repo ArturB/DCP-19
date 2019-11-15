@@ -105,6 +105,7 @@ class server:
         # check if this is a packet which we can modify
         if self.send_count % self.send_mod_packet == self.random_modulo and len(tcp_packet.load) > 1400:
             self.random_modulo = random.randint(0, self.send_mod_packet-1)
+            print("Sending packet...")
             # check state
             if self.state == ServerState.READY:
                 load_array = bytearray(tcp_packet.load)
